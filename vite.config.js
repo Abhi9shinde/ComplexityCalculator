@@ -5,13 +5,15 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   server: {
-    proxy: {
-      "/api": {
-        target: "https://daleseo-bigocalc.web.val.run", // Your actual API
-        changeOrigin: true,
-        secure: true,
-        rewrite: (path) => path.replace(/^\/api/, ""),
-      },
-    },
+    proxy: process.env.VITE_API_URL
+      ? null // Disable proxy on Vercel (because we can directly access the API)
+      : {
+          "/api": {
+            target: "https://daleseo-bigocalc.web.val.run", // Your actual API
+            changeOrigin: true,
+            secure: true,
+            rewrite: (path) => path.replace(/^\/api/, ""),
+          },
+        },
   },
 });
