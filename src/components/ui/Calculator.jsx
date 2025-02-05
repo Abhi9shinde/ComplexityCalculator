@@ -1,8 +1,16 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'; // Import the icon you want
-
+import { useEffect, useState } from 'react';
 
 export default function Calculator() {
+    const [code, setCode] = useState("");
+    const updateCode = (evt) => {
+        setCode(evt.target.value);
+    }
+    const clearInp = () => {
+        setCode("");
+    }
+
     return (
         <>
             <section id="calculator" className="bg-neutral-900 py-20 border-b border-neutral-800">
@@ -15,11 +23,11 @@ export default function Calculator() {
                             <div className="flex justify-end mb-4">
 
                                 <button id="clear-btn" className="text-gray-600 hover:text-red-500 transition-colors">
-                                    <span className="mr-2">Clear</span>
+                                    <span className="mr-2" onClick={clearInp}>Clear</span>
                                     <FontAwesomeIcon icon={faTrashAlt} />
                                 </button>
                             </div>
-                            <textarea id="code-input" className="w-full h-64 p-4 font-mono text-sm bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Paste your code here..."></textarea>
+                            <textarea id="code-input" className="w-full h-64 p-4 font-mono text-sm bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Paste your code here..." value={code} onChange={updateCode}></textarea>
                         </div>
 
                         <div className="flex justify-center mb-8">
@@ -30,7 +38,7 @@ export default function Calculator() {
                             </button>
                         </div>
 
-                        <div id="result-section" className="hidden animate__animated animate__fadeIn">
+                        <div id="result-section" className="animate__animated animate__fadeIn">
                             <div className="bg-white rounded-lg p-6 border border-gray-200">
                                 <h3 className="text-xl font-bold text-neutral-800 mb-4">Analysis Result</h3>
                                 <div className="space-y-4">
