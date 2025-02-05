@@ -1,5 +1,5 @@
 export default async function handler(req, res) {
-  const url = import.meta.env.VITE_API_URL;
+  const url = process.env.EXTERNAL_API_URL;
   const externalApiUrl = url;
 
   try {
