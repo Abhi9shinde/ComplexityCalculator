@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useRef } from "react";
 import { HeroSection } from "../components/ui/HeroSection";
 import GradientText from "../components/ui/GradientText";
 import { h1 } from "framer-motion/client";
@@ -12,9 +12,12 @@ import Doc from "../components/ui/Doc"
 import Examples from "../components/ui/Examples";
 import FAQ from "../components/ui/FAQ";
 import Footer from "../components/ui/Footer";
+import { Link } from "react-scroll";
 
 
 export function Home() {
+    const calculatorRef = useRef(null);
+    const workref = useRef(null);
     return (
         <>
             <HeroSection>
@@ -38,17 +41,17 @@ export function Home() {
                         <p className="font-extralight md:text-2xl text-[#8798B3]">of your code, helping you optimize performance and write efficient algorithms.</p>
                     </div>
                     <div className="grid grid-cols-2">
-                        <button
-                            className="flex bg-black dark:bg-white rounded-full w-fit text-white dark:text-black px-4 mx-3 py-2 hover:bg-black/80 hover:text-white">
+                        <Link to="calculator" smooth={true} duration={900}
+                            className="flex bg-black dark:bg-white rounded-full w-fit text-white dark:text-black px-4 mx-3 py-2 hover:bg-black/80 hover:text-white cursor-pointer">
                             Try Now <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-5 mx-1 my-0.5">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
                             </svg>
 
-                        </button>
-                        <button
-                            className="bg-black dark:bg-white rounded-full w-fit text-white dark:text-black px-4 py-2 hover:bg-black/80 hover:text-white">
+                        </Link>
+                        <Link to="howworks" smooth={true} duration={900}
+                            className="bg-black dark:bg-white rounded-full w-fit text-white dark:text-black px-4 py-2 hover:bg-black/80 hover:text-white cursor-pointer">
                             Learn More
-                        </button>
+                        </Link>
                     </div>
                 </motion.div>
             </HeroSection>
@@ -76,9 +79,14 @@ export function Home() {
                 </div >
             </div>
             {/* CALCULATOR */}
-            <Calculator />
+            <div id="calculator" ref={calculatorRef}>
+                <Calculator />
+            </div>
             <KeyFeatures />
-            <HowWorks />
+            <div id="howworks" ref={workref}>
+                <HowWorks />
+            </div>
+
             <Doc />
             <Examples />
             <FAQ />
