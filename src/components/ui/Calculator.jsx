@@ -21,7 +21,7 @@ export default function Calculator() {
                 body: JSON.stringify({ code }),
             });
 
-            const data = await res.json(); // ✅ Fixed missing `await`
+            const data = await res.json();
             if (!res.ok) {
                 throw new Error(data.error || `Request failed with status ${res.status}`);
             }
