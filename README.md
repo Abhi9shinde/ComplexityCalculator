@@ -32,9 +32,9 @@ npm start
 
 **Here's a glimpse of the Complexity Calculator in action:**
 
-| Code Input | Analysis Result | Visualization |
+| Home Page | Analysis Result | Document |
 |------------|----------------|--------------|
-| *Screenshot 1* | *Screenshot 2* | *Screenshot 3* |
+| <img src="public/screenshot1.png" alt="Home Page" width="400"> | <img src="public/screenshot2.png" alt="Code Analysis" width="400"> | <img src="public/screenshot3.png" alt="Document" width="400"> |
 
 ## Tech Stack
 
